@@ -1,0 +1,22 @@
+/* styles.css */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  min-height: 630px;
+}
+
+footer {
+  padding: 10px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}

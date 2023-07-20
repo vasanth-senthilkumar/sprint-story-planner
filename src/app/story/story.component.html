@@ -1,0 +1,55 @@
+<h4>CreateStories</h4>
+<div class="row">
+    <div class="col">
+        <select class="form-control mb-2" (change)="onStorySelect($event)">
+            <option value="" disabled selected>Select a story to delete</option>
+            <option *ngFor="let story of stories" [value]="story.id">Story: {{ story.title }}</option>
+        </select>
+        <div class="float-end">
+            <button class="btn btn-danger me-2" (click)="deleteSelectedStory()">Delete Selected Story</button>
+            <button class="btn btn-danger" (click)="deleteAllStory()">Delete All Story</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h5 class="m-2">Add Story</h5>
+                    <button class="btn btn-success" style="margin-left: 35rem;" routerLink="/story-list">Story
+                        List</button>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input class="form-control" type="text" [(ngModel)]="newStory.title" placeholder="Story Title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Description" class="form-label">Description</label>
+                        <textarea class="form-control" type="text" [(ngModel)]="newStory.description"
+                            placeholder="Story Description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <input class="form-control" type="text" [(ngModel)]="newStory.status"
+                            placeholder="Story Status">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sprint" class="form-label">Assign to Sprint</label>
+                        <select class="form-control" id="sprintSelectNew" [(ngModel)]="newStory.sprintId">
+                            <option *ngFor="let sprintId of availableSprints" [ngValue]="sprintId">
+                                Sprint {{ sprintId }}
+                            </option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary float-end" (click)="addStory()">Add Story</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="message" class="alert alert-info mt-2">
+        {{ message }}
+    </div>
+</div>

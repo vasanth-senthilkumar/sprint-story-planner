@@ -1,0 +1,21 @@
+<h4>Sprint Lists</h4>
+<div class="row">
+    <div class="col" *ngFor="let sprint of sprints">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div *ngIf="editMode && selectedSprint">
+                    <input class="form-control mb-2" type="text" [(ngModel)]="selectedSprint.name">
+                    <button class="btn btn-success me-2" (click)="updateSprint()">Save</button>
+                    <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+                </div>
+                <div *ngIf="!editMode || selectedSprint?.id !== sprint.id">
+                    <h5 class="card-title">{{ sprint.name }}</h5>
+                    <p class="card-text">Start Date: {{ sprint.startDate | date }}</p>
+                    <p class="card-text">End Date: {{ sprint.endDate | date }}</p>
+                    <button class="btn btn-primary me-2" (click)="editSprint(sprint)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteSprint(sprint.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
